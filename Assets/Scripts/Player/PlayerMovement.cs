@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform _constrainedCenter;
 
     [Range(0, 100)]
-    [SerializeField] private int percentIncreaseSpeed;
+    [SerializeField] private int _percentIncreaseSpeed;
     [SerializeField] private float _forwardSpeed, _deflectionSpeed;
 
     private Rigidbody _rigidbody;
@@ -21,14 +19,14 @@ public class PlayerMovement : MonoBehaviour
     {
         SwipeController.SwipeEvent += RejectPlayer;
 
-        RaceController.CirclePassed += IncreaseSpeed;
+        RaceManager.OnCirclePassed += IncreaseSpeed;
     }
 
     private void OnDestroy()
     {
         SwipeController.SwipeEvent -= RejectPlayer;
 
-        RaceController.CirclePassed -= IncreaseSpeed;
+        RaceManager.OnCirclePassed -= IncreaseSpeed;
     }
 
     private void FixedUpdate()
@@ -38,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void IncreaseSpeed()
     {
-        _forwardSpeed += _forwardSpeed * percentIncreaseSpeed / 100;
+        _forwardSpeed += _forwardSpeed * _percentIncreaseSpeed / 100;
     }
 
     private void RejectPlayer(SwipeController.SwipeType type)

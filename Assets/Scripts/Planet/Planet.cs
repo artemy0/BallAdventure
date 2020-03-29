@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class Planet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Гравитация (сила действующая на игрока со стороны планеты)
         Vector3 directionToPlanet = (transform.position - _player.position).normalized;
         _player.velocity += directionToPlanet * _gravityForce * Time.fixedDeltaTime;
     }

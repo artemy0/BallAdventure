@@ -1,51 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProgressManager : MonoBehaviour
 {
-    //Работа с прогрессом, её необходимо перенести сюда
     public static System.Action<ProgressManager> OnUpdate;
 
-    public float raceProgress { get; private set; }
-    public int distanceSiceStart { get; private set; }
-    public int secondsSiceStart { get; private set; }
-    public int obstaclesCount { get; private set; }
+    public float RaceProgress { get; private set; }
+    public int PassedDistance { get; private set; }
+    public int PassedTime { get; private set; }
+    public int ObstaclesCount { get; private set; }
 
     private void Update()
     {
-        OnUpdate?.Invoke(this);
+        OnUpdate?.Invoke(this); //что та надо сделать
     }
 
     private void OnLevelWasLoaded(int level)
     {
         if(level == 1)
         {
-            Debug.Log("1 scene was loaded.");
-
-            RaceController.OnSave += SaveRaceProgress;
-
-            RaceStatistics.OnSave += SaveRaceStatistics;
+            RaceManager.OnSave += SaveRaceProgress;
         }
-        if(level == 2)
+        if(level != 1)
         {
-            Debug.Log("2 scene was loaded.");
-
-            RaceController.OnSave -= SaveRaceProgress;
-
-            RaceStatistics.OnSave -= SaveRaceStatistics;
+            RaceManager.OnSave -= SaveRaceProgress;
         }
     }
 
-    private void SaveRaceProgress(RaceController race)
+    private void SaveRaceProgress(RaceManager race)
     {
-        raceProgress = race.GetRaceProgress();
-        distanceSiceStart = (int)race.GetPassedDistance();
-    }
-
-    private void SaveRaceStatistics(RaceStatistics race)
-    {
-        secondsSiceStart = (int)race.timeSiceStart;
-        obstaclesCount = race.obstaclesCount;
+        RaceProgress = race.RaceProgress;
+        PassedDistance = (int)race.PassedDistance;
+        PassedTime = (int)race.TimeSiceStart;
+        ObstaclesCount = race.ObstaclesCount;
     }
 }

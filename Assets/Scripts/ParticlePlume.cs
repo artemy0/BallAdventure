@@ -13,7 +13,12 @@ public class ParticlePlume : MonoBehaviour
 
     private void Start()
     {
-        RaceController.CirclePassed += GenerateRandomColor;
+        RaceManager.OnCirclePassed += GenerateRandomColor;
+    }
+
+    private void OnDestroy()
+    {
+        RaceManager.OnCirclePassed -= GenerateRandomColor;
     }
 
     private void GenerateRandomColor()

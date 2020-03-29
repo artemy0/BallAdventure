@@ -24,19 +24,13 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        Player.GameOver += () => LoadScene(2);
+        Player.OnDeath += () => LoadScene(2); //сцена с результатами
     }
 
     public void LoadScene(int sceneIndex)
     {
         StartCoroutine(LoadLevelCoroutine(sceneIndex));
     }
-
-    //public void ReloadCurrentScene()
-    //{
-    //    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    //    StartCoroutine(LoadLevelCoroutine(currentSceneIndex));
-    //}
 
     private IEnumerator LoadLevelCoroutine(int sceneIndex)
     {

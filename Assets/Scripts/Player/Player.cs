@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static System.Action GameOver;
+    public static System.Action OnDeath;
 
     public void Die()
     {
-        GameOver?.Invoke();
+        OnDeath?.Invoke();
     }
 }

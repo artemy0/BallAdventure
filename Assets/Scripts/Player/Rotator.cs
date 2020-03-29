@@ -9,6 +9,11 @@ public class Rotator : MonoBehaviour
         SwipeController.SwipeEvent += RotateCenter;
     }
 
+    private void OnDestroy()
+    {
+        SwipeController.SwipeEvent -= RotateCenter;
+    }
+
     private void RotateCenter(SwipeController.SwipeType type)
     {
         switch (type)

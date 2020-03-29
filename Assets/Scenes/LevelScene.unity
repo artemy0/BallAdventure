@@ -161,9 +161,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 118511531}
-  - component: {fileID: 118511532}
-  - component: {fileID: 118511533}
   - component: {fileID: 118511534}
+  - component: {fileID: 118511535}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -185,33 +184,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &118511532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118511530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c7b782f35e00a41b9fa688d9ed7105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 1998845556}
-  _planet: {fileID: 1888836871}
---- !u!114 &118511533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118511530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500598d7233b1f84ea7654b758b63789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _obstaclesStorage: {fileID: 70258229}
 --- !u!114 &118511534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +196,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaf99d2ea6ebda4e937239512830c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &118511535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118511530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493f0eb0b51a38843a4a11f9f02b4bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1998845556}
+  _planet: {fileID: 1888836871}
+  _obstaclesStorage: {fileID: 70258229}
 --- !u!1 &291081342
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raceProgress: {fileID: 1842024729}
-  _travelDistance: {fileID: 1164879871}
-  _travelTime: {fileID: 580891310}
+  _passedDistance: {fileID: 1164879871}
+  _passedTime: {fileID: 580891310}
   _obstaclesCount: {fileID: 1226846699}
 --- !u!1 &354504054
 GameObject:
@@ -646,7 +633,7 @@ GameObject:
   - component: {fileID: 580891311}
   - component: {fileID: 580891310}
   m_Layer: 5
-  m_Name: TravelTime
+  m_Name: PassedTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -994,7 +981,7 @@ GameObject:
   - component: {fileID: 1164879872}
   - component: {fileID: 1164879871}
   m_Layer: 5
-  m_Name: TravelDistance
+  m_Name: PassedDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1898,7 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _constrainedCenter: {fileID: 354504055}
-  percentIncreaseSpeed: 30
+  _percentIncreaseSpeed: 0
   _forwardSpeed: 10
   _deflectionSpeed: 5
 --- !u!114 &1998845559

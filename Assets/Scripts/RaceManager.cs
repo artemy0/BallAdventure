@@ -2,53 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaceController : MonoBehaviour
+public class RaceManager : MonoBehaviour
 {
-    public static System.Action<RaceController> OnSave;
+    public static System.Action<RaceManager> OnSave;
 
-    public static System.Action CirclePassed;
+    public static System.Action OnCirclePassed;
+
+    public float RaceProgress { get { return _passedAngle / _fullCircleAngle; } }
+    public float PassedDistance { get; private set; }
+    public float TimeSiceStart { get; private set; }
+    public int ObstaclesCount { get { return _obstaclesStorage.childCount; } }
 
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _planet;
 
+    [SerializeField] private Transform _obstaclesStorage;
+
     private float _fullCircleAngle = 360f; //кругом вокруг планеты считается прохождение по ней пути в 360 градусов
     private float _passedAngle;
-    private float _passedDistance;
 
     private Vector3 previousPlayerPosition;
 
     private void Start()
     {
+        PassedDistance = 0f;
+        TimeSiceStart = 0f;
+
         _passedAngle = 0f;
+
         previousPlayerPosition = _player.position;
     }
 
     private void Update()
     {
+        TimeSiceStart += Time.deltaTime;
+
         float angle = GetPlanetaryAngle(previousPlayerPosition, _player.position);
         _passedAngle += angle;
 
-        _passedDistance += Vector3.Distance(previousPlayerPosition, _player.position);
+        PassedDistance += Vector3.Distance(previousPlayerPosition, _player.position);
 
         if (_passedAngle > _fullCircleAngle)
         {
-            CirclePassed?.Invoke();
+            OnCirclePassed?.Invoke();
             _passedAngle = 0f;
         }
 
         OnSave?.Invoke(this);
 
         previousPlayerPosition = _player.position;
-    }
-
-    public float GetRaceProgress()
-    {
-        return _passedAngle / _fullCircleAngle;
-    }
-
-    public float GetPassedDistance()
-    {
-        return _passedDistance;
     }
 
     private float GetPlanetaryAngle(Vector3 from, Vector3 to)

@@ -316,8 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raceProgress: {fileID: 0}
-  _travelDistance: {fileID: 693905784}
-  _travelTime: {fileID: 786385708}
+  _passedDistance: {fileID: 693905784}
+  _passedTime: {fileID: 786385708}
   _obstaclesCount: {fileID: 10379841}
 --- !u!1 &543982150
 GameObject:
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 693905785}
   - component: {fileID: 693905784}
   m_Layer: 5
-  m_Name: TravelDistance
+  m_Name: PassedDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 786385709}
   - component: {fileID: 786385708}
   m_Layer: 5
-  m_Name: TravelTime
+  m_Name: PassedTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

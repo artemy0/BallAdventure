@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlanetConstraint : MonoBehaviour
 {
@@ -8,6 +6,7 @@ public class PlanetConstraint : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Поворот объекта к которому прикреплён скрипт к центру планеты
         Quaternion rotation = Quaternion.FromToRotation(-transform.up, _targetPlanet.position - transform.position);
         transform.rotation = rotation * transform.rotation;
     }
